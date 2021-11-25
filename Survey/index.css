@@ -1,0 +1,69 @@
+main {
+    min-height: 20vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+form {
+    min-height: 80vh;
+    min-width: 80vw;
+    padding: 1%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+form fieldset {
+    width: 80%;
+    min-height: 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0.2%;
+}
+
+form fieldset input {
+    min-width: 80%;
+    min-height: 45px;
+}
+
+#dropdown {
+    min-width: 80%;
+    min-height: 45px;
+}
+
+.multiple {
+    justify-content: flex-start; 
+}
+
+.multiple span{
+    margin: auto; 
+}
+
+.multiple input {
+    min-height: initial;
+    min-width: initial;
+}
+
+#comment {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#comment textarea {
+    min-width: 100%;
+    min-height: 100px;
+}
+
+[type="submit"] {
+    min-width: 100px;
+    min-height: 50px;
+    font-size: 20px;
+    margin: 0.2%;
+}
