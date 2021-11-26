@@ -1,0 +1,29 @@
+
+#navbar {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    position: fixed;
+    top: 0;
+}
+
+#navbar a {
+    text-decoration: none;
+    margin: 20px;
+}
+
+#welcome-section {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+@media (max-width: 600px) {
+    #welcome-section {
+        flex-direction: column;
+    }
+}
+

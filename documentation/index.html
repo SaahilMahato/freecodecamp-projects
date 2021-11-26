@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Documentation</title>
+        <link rel="stylesheet" href="index.css">
+    </head>
+    <body>
+        <div id="content">
+        <nav id="navbar">
+            <header>Transportaion Optimizer</header>
+            <a class="nav-link" href="#Introduction">Introduction</a>
+            <a class="nav-link" href="#Technologies">Technologies</a>
+            <a class="nav-link" href="#Code">Code</a>
+            <a class="nav-link" href="#Testing">Testing</a>
+            <a class="nav-link" href="#Conclusion">Conclusion</a>
+        </nav>
+
+        <main id="main-doc">
+
+            <section id="Introduction" class="main-section">
+                <header>Introduction</header>
+                <p>The Transportation Fare Optimization is a project that aims to automate the process of calculating the cheapest travel route between two locations. The app provides a graphical user interface that allows the user to select the source and destination and then calculate the cheapest route by fare or travel distance and display it to the user. The app also provides information about the amount of money that a user will save if they take the shortest route and the representation of the output in a map.</p>
+                <p>The travel routes and fares are very complicated in densely populated cities like Kathmandu. In such cases, it is difficult for an individual to find the shortest route between locations and the cheapest way that they can travel especially if they are non frequent travellers and recently arrived in the city. Although there are boards and postures all the bus stations that include the route and travel fares it does not provide the user with optimized routes between the bus stations or stops. “Travel Fare Optimization” is a project with the vision to solve the problem. It uses an algorithmic method to find the cheapest route by travel fare.</p>
+            </section>
+
+            <section id="Technologies" class="main-section">
+                <header>Technologies</header>
+                <p>The location and travel data was a bit complex to transform it into a graph in a straightforward way so we had to create a abstract or custom graph for the application. Each location had 3 stops; bus, mini-bus and tempo. Each of these stops have their own travel fare rates and routes. So, a station cannot be a single node or vertex in the graph. Instead, each station could be an abstract node which consists of three nodes, one node each for bus, mini-bus and tempo.</p>
+                <p>The algorithm that is used to find the shortest distance between two nodes is the Dijkstra’s algorithm. The reasons for using the Dijkstra’s algorithm are:
+                    <ul>
+                        <li>It has considerably low complexity for this specific purpose which is almost linear since the graph of the travel routes is not a complete graph.</li>
+                        <li>Travel fare cannot be negative so Dijkstra's algorithm will always provide the correct output.</li>
+                        <li>Graph that included all locations and travel fare between them.</li>
+                        <li>An algorithm to calculate the cheapest route.</li>
+                        <li>A GUI to provide interactivity and output.</li>
+                    </ul>
+                </p>
+            </section>
+
+            <section id="Code" class="main-section">
+                <header>Code</header>
+                <p>The algorithm was implemented from scratch without using any libraries since we had a custom graph written in the JSON format and we needed personalized output that included both the travel route and the travel fare.</p>
+                <p>
+                    <code>
+                        _shortestDistanceNode(distances, visited) {
+                            let shortest = null;
+                            for (let node in distances)
+                              if ((shortest === null || distances[node] less than distances[shortest]) && !visited.includes(node)) shortest = node;
+                            return shortest;
+                        }                        
+                    </code>
+                    <code>
+                        _findShortestPath(graph, startNode, endNode) {
+                            let distances = {};
+                            distances[endNode] = Number.MAX_VALUE;
+                            distances = Object.assign(distances, graph[startNode]);
+                        
+                    </code>
+                    <code>
+                        let visited = [];
+                        let node = this._shortestDistanceNode(distances, visited);
+
+                    </code>
+                    <code>
+                        for (let child in children) {
+                            if (String(child) === String(startNode)) {
+                              continue;
+                            } else {
+                              let newdistance = distance + children[child];
+                              if (!distances[child] || distances[child] > newdistance) {
+                                distances[child] = newdistance;
+                                parents[child] = node;
+                              }
+                            }
+                          }
+                          visited.push(node);
+                          node = this._shortestDistanceNode(distances, visited);
+                        }
+                    </code>
+                    <code>
+                        results.push(this._findShortestPath(fare, source + '_bus', destination + '_bus'));
+                        results.push(this._findShortestPath(fare, source + '_bus', destination + '_mini'));
+                        results.push(this._findShortestPath(fare, source + '_bus', destination + '_tempo'));
+                        results.push(this._findShortestPath(fare, source + '_mini', destination + '_bus'));
+                        results.push(this._findShortestPath(fare, source + '_mini', destination + '_mini'));
+                        results.push(this._findShortestPath(fare, source + '_mini', destination + '_tempo'));
+                        results.push(this._findShortestPath(fare, source + '_tempo', destination + '_bus'));
+                        results.push(this._findShortestPath(fare, source + '_tempo', destination + '_mini'));
+                        results.push(this._findShortestPath(fare, source + '_tempo', destination + '_tempo'));
+                    </code>
+                </p>
+            </section>
+
+            <section id="Testing" class="main-section">
+                <header>Testing</header>
+                <p>The interface includes the map and the buttons for drawing the graphs and nodes. Below the graph are selectors that allow the user to select travel source and destination and the solve button to calculate the fare.</p>
+                <p>The User Interface also includes the feature of being able to draw the graph or the route over the map. The exact coordinates of the location were coded in JSON format and the circle and line drawing functions draw the nodes and edges of the graph.</p>
+            </section>
+
+            <section id="Conclusion" class="main-section">
+                <header>Conclusion</header>
+                <p>The project was successful and gave accurate results on the dummy graph. It provided the visual representation of the graph over the map. The user was able to enter all the available locations as source or destination and calculate the cheapest travel fare and the amount of money saved.</p>
+                <p>Include additional modes of transport like Airways.</p>
+            </section>
+
+        </main>
+        </div>
+    </body>
+</html>

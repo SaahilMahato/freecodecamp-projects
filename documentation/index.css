@@ -1,0 +1,51 @@
+#content {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+#navbar {
+    flex-shrink: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    min-width: 15%;
+    margin: 15px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+}
+
+#navbar header {
+    font-weight: bold;
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.nav-link {
+    margin: 10px 10px 10px 15px;
+    text-decoration: none;
+}
+
+#main-doc {
+    flex-shrink: 3;
+    max-width: 85%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 0px 0px 0px 15%;
+}
+
+.main-section header {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+@media (max-width: 1600px) {
+    #main-doc {
+        margin-left: 250px;
+    }
+}
